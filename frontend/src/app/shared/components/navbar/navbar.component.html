@@ -1,0 +1,84 @@
+<div class="title" [ngClass]="{ small: isSmall() }">
+  BookExchangePlatform {{ onTop | json }}
+</div>
+
+@if(user()) { @let searchParams = params();
+
+<div class="search-container">
+  <div class="search-box">
+    <input
+      ngModel
+      #searchInput="ngModel"
+      type="text"
+      placeholder="Search for a book..."
+      (keydown.enter)="searchButton.click()"
+    />
+    <button
+      #searchButton
+      type="button"
+      [routerLink]="['/books']"
+      [queryParams]="{
+        search: searchInput.value,
+        location: searchParams.location,
+        genre: searchParams.genre,
+        condition: searchParams.condition,
+        availability: searchParams.availabililty
+      }"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</div>
+<nav>
+  <button
+    type="button"
+    [cdkMenuTriggerFor]="menu"
+    mat-icon-button
+    class="example-standalone-item"
+  >
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <ng-template #menu>
+    <ul class="menu-list" cdkMenu>
+      <li cdkMenuItem>
+        <a routerLinkActive="active" routerLink="/book-listings"
+          >Book Listings</a
+        >
+      </li>
+      <li cdkMenuItem>
+        <a routerLinkActive="active" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </ng-template>
+</nav>
+} @else { @if(!isSmall()) {
+<nav>
+  <ul>
+    <li><a routerLinkActive="active" routerLink="/home">Home</a></li>
+    <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
+  </ul>
+</nav>
+} @else {
+<nav>
+  <button
+    type="button"
+    [cdkMenuTriggerFor]="menu"
+    mat-icon-button
+    class="example-standalone-item"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <ng-template #menu>
+    <ul class="menu-list" cdkMenu>
+      <li cdkMenuItem>
+        <a routerLinkActive="active" routerLink="/home">Home</a>
+      </li>
+      <li cdkMenuItem>
+        <a routerLinkActive="active" routerLink="/login">Login</a>
+      </li>
+    </ul>
+  </ng-template>
+</nav>
+} }

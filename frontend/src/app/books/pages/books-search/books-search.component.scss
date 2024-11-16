@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  background-color: #0001;
+  height: 100%;
+  background-color: #d9c69f;
+}
+
+section {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.title {
+  display: flex;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+input[type=text] {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  outline: transparent;
+  background-color: #0001;
+  border-radius: 0.25rem 0.25rem 0 0;
+  border-bottom: 2px solid #91846a;
+  &:focus-visible,
+  &:focus {
+    border-bottom: 2px solid black;
+  }
+}

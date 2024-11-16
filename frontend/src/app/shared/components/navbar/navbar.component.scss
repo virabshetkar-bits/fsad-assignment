@@ -1,0 +1,120 @@
+:host {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+
+  height: 64px;
+
+  box-shadow: 0 0 15px #0009;
+  transition: box-shadow 300ms;
+  &.small {
+    height: 56px;
+  }
+  &.top {
+    box-shadow: none;
+  }
+}
+
+.title {
+  font-size: 1.4rem;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  &.small {
+    font-size: 1.2rem;
+  }
+}
+
+.search-container {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+  .search-box {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr auto;
+    background-color: #0003;
+    border-radius: 100px;
+    input {
+      background-color: transparent;
+      border: none;
+      outline: transparent;
+      font-size: 1.1rem;
+      padding-inline: 1rem;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      outline: transparent;
+      cursor: pointer;
+      aspect-ratio: 1 / 1;
+      padding: 0;
+      background-color: #0003;
+      border-radius: 50%;
+    }
+  }
+}
+
+nav {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-inline: 1rem;
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    list-style: none;
+    li {
+      height: 100%;
+
+      a {
+        padding: 1rem;
+        height: 100%;
+        text-decoration: none;
+        font-size: 1.1rem;
+        display: grid;
+        place-items: center;
+        color: #999;
+        transition: color 300ms;
+        &:hover,
+        &.active {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.menu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-color: #c1b08d;
+  li {
+    a {
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem 1rem;
+      display: inline-block;
+      width: 100%;
+      font-size: 1rem;
+      &:hover,
+      &.active {
+        background-color: #605846;
+        color: #fff;
+      }
+    }
+  }
+}
+
+span {
+  display: inline-block;
+  font-size: 1.1rem;
+}

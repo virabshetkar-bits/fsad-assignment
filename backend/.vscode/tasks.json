@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start:debug",
+      "group": "rebuild",
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "beginsPattern": ".",
+          "endsPattern": "Nest application successfully started",
+          "activeOnStart": true
+        }
+      },
+      "label": "npm: start:debug",
+      "detail": "nest start --debug --watch",
+      "isBackground": true
+    }
+  ]
+}

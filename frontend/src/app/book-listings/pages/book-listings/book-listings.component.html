@@ -1,0 +1,25 @@
+<section>
+  <div class="title">
+    <div>Your Books</div>
+    <div class="actions">
+      <button class="btn" routerLink="./create">
+        <mat-icon>add</mat-icon>Create
+      </button>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="container">
+    @for (book of (books()); track book.id) {
+    <app-book-listings-item
+      (onDelete)="handleDelete(book)"
+      (onEdit)="handleEdit(book)"
+      [showEdit]="true"
+      [booklisting]="book"
+    ></app-book-listings-item>
+    } @empty { @if(loading) {
+    <h1>Loading...</h1>
+    } @else {
+    <h1>You don't have any books!</h1>
+    } }
+  </div>
+</section>

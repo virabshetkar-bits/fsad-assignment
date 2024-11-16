@@ -1,0 +1,20 @@
+.full-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+header {
+  position: sticky;
+  top: 0;
+  background-color: #f2dcb1;
+}
+main {
+  background-color: #d9c69f;
+}
+
+mat-progress-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id           String                @id @default(uuid())
+  full_name    String
+  email        String                @unique
+  location     Location              @relation(fields: [locationId], references: [id])
+  locationId   Int
+  password     String
+  booklisting  BookListing[]
+  resetRequest PasswordResetRequest?
+}
+
+model Location {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  User User[]
+}
+
+model PasswordResetRequest {
+  id      String @id @default(uuid())
+  code    String
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String @unique
+}
+
+model Author {
+  id    String        @id @default(uuid())
+  name  String        @unique
+  books BookListing[]
+}
+
+model BookListing {
+  id                   String               @id @default(uuid())
+  title                String
+  authors              Author[]
+  genres               Genre[]
+  condition            String
+  owner                User                 @relation(fields: [ownerId], references: [id])
+  ownerId              String
+  available            Boolean              @default(true)
+  bookexchangerequest1 BookExchangeRequest? @relation(name: "bl1")
+  bookexchangerequest2 BookExchangeRequest? @relation(name: "bl2")
+}
+
+model BookExchangeRequest {
+  id               String      @id @default(uuid())
+  booklisting_1    BookListing @relation(fields: [booklisting_1_id], references: [id], name: "bl1")
+  booklisting_1_id String      @unique
+  booklisting_2    BookListing @relation(fields: [booklisting_2_id], references: [id], name: "bl2")
+  booklisting_2_id String      @unique
+
+  @@unique([booklisting_1_id, booklisting_2_id])
+}
+
+model Genre {
+  id    Int           @id @default(autoincrement())
+  name  String        @unique
+  books BookListing[]
+}

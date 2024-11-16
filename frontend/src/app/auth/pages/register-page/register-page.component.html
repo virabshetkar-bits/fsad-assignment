@@ -1,0 +1,99 @@
+@if (state === "initial") {
+<section class="register-section">
+  <div class="title">Register</div>
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <small> @if (authError === "user_exists") { User already exists } </small>
+    <div class="form-control">
+      <label for="name">Name: </label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter Full name..."
+        formControlName="full_name"
+      />
+      <small>
+        @if(fullNameControl.touched && fullNameControl.errors?.["required"]) {
+        Full name is required }
+      </small>
+    </div>
+    <div class="form-control">
+      <label for="location">Location: </label>
+      <input
+        type="text"
+        name="location"
+        placeholder="Enter Location..."
+        formControlName="location"
+        autocomplete="off"
+        (keydown.arrowup)="$event.preventDefault(); handleKeyDown($event)"
+        (keydown.arrowdown)="$event.preventDefault(); handleKeyDown($event)"
+        (keyup.enter)="$event.preventDefault(); handleKeyDown($event)"
+        (blur)="onBlur()"
+        (focus)="onFocus($event)"
+      />
+
+      <small>
+        @if(locationControl.touched && locationControl.errors?.["required"]) {
+        Location is required }
+      </small>
+    </div>
+    <div class="form-control">
+      <label for="email">Email: </label>
+      <input
+        type="text"
+        name="email"
+        placeholder="Enter Email..."
+        formControlName="email"
+      />
+      <small>
+        @if(emailControl.touched && emailControl.errors?.["required"]) { Email
+        is required } @else if(emailControl.touched &&
+        emailControl.errors?.["email"]) { Invalid e-mail }
+      </small>
+    </div>
+    <div class="form-control">
+      <label for="password">Password: </label>
+      <input
+        type="password"
+        name="password"
+        autocomplete="on"
+        placeholder="Enter Password..."
+        formControlName="password"
+      />
+      <small>
+        @if(passwordControl.touched && passwordControl.errors?.["required"]) {
+        Password is required } @else if(passwordControl.touched &&
+        passwordControl.errors?.["minlength"]) { Password is short }
+      </small>
+    </div>
+    <div class="form-control">
+      <label for="password">Retype Password: </label>
+      <input
+        type="password"
+        name="password"
+        autocomplete="on"
+        placeholder="Retype Password..."
+        formControlName="retypePassword"
+      />
+      <small>
+        @if(retypePasswordControl.touched &&
+        retypePasswordControl.errors?.["required"]) { Password is required }
+        @else if (retypePasswordControl.touched &&
+        registerForm.errors?.["passwordMatch"]) { Password does not match }
+      </small>
+    </div>
+    <button class="btn" type="submit" [disabled]="registerForm.invalid">
+      Submit @if (loading) {
+      <div class="loading"><mat-spinner [diameter]="20"></mat-spinner></div>
+      }
+    </button>
+  </form>
+</section>
+} @else if(state === "success") {
+<section>
+  <div class="container">
+    <h1>Registered Successfully!</h1>
+    <p>Thank you for signing up with us.</p>
+    <button class="btn" routerLink="/login">Login</button>
+  </div>
+</section>
+}

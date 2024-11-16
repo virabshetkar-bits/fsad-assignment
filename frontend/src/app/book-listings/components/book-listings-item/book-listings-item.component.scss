@@ -1,0 +1,57 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  background-color: #0003;
+  padding: 2rem 0.5rem;
+  align-items: center;
+  border-radius: 0.5rem;
+  justify-content: center;
+}
+
+.title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+.author {
+  font-size: 0.9rem;
+  &::after {
+    content: ","
+  }
+  &:last-child::after {
+    content: ""
+  }
+}
+
+.genres, .authors {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  border-bottom: 2px solid;
+  padding-block: 1rem;
+}
+
+
+.genre {
+  padding: 0.25rem 0.5rem;
+  border-radius: 100px;
+  background-color: #0003;
+}
+
+.condition, .available {
+  padding-block: 0.5rem;
+}
+
+.by {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-self: stretch;
+}

@@ -1,0 +1,38 @@
+:host {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr 1fr;
+}
+
+.login-section {
+  background-color: #a99a7b;
+  display: grid;
+  place-items: center;
+  padding: 3rem;
+}
+
+.register-section {
+  display: grid;
+  place-items: center;
+  padding: 3rem;
+}
+
+.content {
+  max-width: 600px;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+}
+button {
+  outline: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;
+}

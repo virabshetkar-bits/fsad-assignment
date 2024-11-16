@@ -1,0 +1,47 @@
+<section class="login-section">
+  <div class="title">Login</div>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <div class="form-control">
+      <label for="email">Email: </label>
+      <input
+        type="text"
+        name="email"
+        placeholder="Enter Email..."
+        formControlName="email"
+      />
+      <small>
+        @if(emailControl.touched && emailControl.errors?.["required"]) { Email
+        is required } @else if(emailControl.touched &&
+        emailControl.errors?.["email"]) { Invalid e-mail }
+      </small>
+    </div>
+    <div class="form-control">
+      <label for="password">Password: </label>
+      <input
+        type="password"
+        name="password"
+        autocomplete="on"
+        placeholder="Enter Password..."
+        formControlName="password"
+      />
+      <small>
+        @if(passwordControl.touched && passwordControl.errors?.["required"]) {
+        Password is required } @else if(passwordControl.touched &&
+        passwordControl.errors?.["minlength"]) { Password is short }
+      </small>
+      <small>
+        @if(authError === "invalid_credentials") { Incorrect Username or
+        Password }
+      </small>
+    </div>
+    <button type="submit" class="btn" [disabled]="loginForm.invalid || loading">
+      Submit @if( loading ) {
+      <div class="loading"><mat-spinner diameter="20"></mat-spinner></div>
+      }
+    </button>
+    <div class="actions">
+      <a routerLink="/register">Create Account</a>
+      <a routerLink="/password-reset">Forgot Password?</a>
+    </div>
+  </form>
+</section>

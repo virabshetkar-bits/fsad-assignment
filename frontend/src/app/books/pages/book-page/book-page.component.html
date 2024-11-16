@@ -1,0 +1,24 @@
+<section>
+  <div class="container">
+    <div class="property">
+      <div class="label">Title</div>
+      <div class="value">{{ booklisting.title }}</div>
+    </div>
+    <div class="property">
+      <div class="label">Authors</div>
+      <div class="value">{{ booklisting.authors | joinStrings }}</div>
+    </div>
+    <div class="property">
+      <div class="label">Genres</div>
+      <div class="value">{{ booklisting.genres | joinStrings }}</div>
+    </div>
+    <div class="property">
+      <div class="label">Availability</div>
+      <div class="value">{{ booklisting.available ? "Available": "Unavailable" }}</div>
+    </div>
+    <div class="property">
+      <div class="label">Condition</div>
+      <div class="value">{{ booklisting.condition | titlecase }}</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+@if(showEdit()) {
+<div class="actions">
+  <button (click)="onEdit.emit()" mat-icon-button>
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button (click)="onDelete.emit()" mat-icon-button>
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+}
+
+<div class="title">{{ booklisting().title }}</div>
+
+<!-- <div class="by">by</div> -->
+
+<div class="authors">
+  @for (author of booklisting().authors; track author.id) {
+  <div class="author">{{ author.name }}</div>
+  }
+</div>
+
+<div class="genres">
+  @for (genre of booklisting().genres; track genre.id) {
+  <div class="genre">{{ genre.name }}</div>
+  }
+</div>
+
+<div class="condition">{{ booklisting().condition | titlecase }}</div>
+
+<div class="available">
+  {{ booklisting().available ? "Available" : "Unavailable" }}
+</div>

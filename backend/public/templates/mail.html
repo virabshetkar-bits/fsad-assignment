@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #ccc;
+            font-family: serif;
+        }
+
+        .header {
+            padding: 1rem;
+            background-color: #f2dcb1;
+        }
+
+        .main {
+            padding: 1rem;
+            background-color: #d9c69f;
+        }
+
+        .footer {
+            padding: 1rem;
+            color: #0009;
+            background-color: #c1b08d;
+            font-size: 0.8rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .content {
+            max-width: 600px;
+            margin-inline: auto;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <header class="header">
+            <div class="title">Book Exchange Platform</div>
+        </header>
+        <main class="main">
+            <p>Hello {{full_name}},</p>
+            <p><a href="{{pwd_reset_url}}" target="_blank">Click here you reset your password.</a></p>
+            <p>If you did not trigger this mail. Please ignore this message.</p>
+            <br />
+            <p>Thanks,</p>
+            <p>BEP Support</p>
+        </main>
+        <footer class="footer">&copy; 2024, Book Exchange Platform. All rights reserved.</footer>
+    </div>
+</body>
+
+</html>

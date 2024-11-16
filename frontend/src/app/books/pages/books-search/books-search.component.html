@@ -1,0 +1,52 @@
+<section>
+  <div name="filterForm" class="filters">
+    <div class="filter">
+      <input
+        type="text"
+        placeholder="Enter genre..."
+        ngModel
+        name="genre"
+        [(ngModel)]="genre"
+        (ngModelChange)="filterChange()"
+      />
+    </div>
+    <div class="filter">
+      <label>Show New</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="showNew"
+        (ngModelChange)="filterChange()"
+      />
+    </div>
+    <div class="filter">
+      <label>Show Available</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="showAvailable"
+        (ngModelChange)="filterChange()"
+      />
+    </div>
+    <div class="filter">
+      <label>Show For Current Location</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="showCurrentLocation"
+        (ngModelChange)="filterChange()"
+      />
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    @for (book of (books()); track book.id) {
+    <app-book-listings-item
+      (click)="handleClick(book)"
+      [showEdit]="false"
+      [booklisting]="book"
+    ></app-book-listings-item>
+    } @empty {
+    <h1>No Search Results!</h1>
+    }
+  </div>
+</section>
