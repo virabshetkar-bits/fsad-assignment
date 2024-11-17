@@ -13,7 +13,6 @@ export class AuthService {
   SALT_ROUNDS = +(this.config.get<number>('SALT_ROUNDS') ?? 10);
   FRONTEND_URL: string = this.config.get('FRONTEND_URL');
 
-  
   constructor(
     private databaseService: DatabaseService,
     private jwtService: JwtService,
@@ -30,8 +29,13 @@ export class AuthService {
           password: user.password,
           email: user.email,
           location: {
-            connect: {
-              name: user.location,
+            connectOrCreate: {
+              where: {
+                name: user.location,
+              },
+              create: {
+                name: user.location,
+              },
             },
           },
         },
