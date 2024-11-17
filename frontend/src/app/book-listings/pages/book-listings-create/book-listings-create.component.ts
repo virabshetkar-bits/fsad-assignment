@@ -173,7 +173,14 @@ export class BookListingsCreateComponent implements OnInit, OnDestroy {
       case 'Enter':
         const selectedItem = this.autoCompleteOverlay.selectedItem?.()?.name;
 
-        if (!selectedItem) return;
+        if (!selectedItem) {
+          const genre = this.genreControl.getRawValue();
+          if (!genre) return;
+          this.genresArray.controls.push(this.fb.nonNullable.control(genre));
+          this.genresArray.updateValueAndValidity();
+          this.genreControl.patchValue('');
+          return;
+        }
         this.genresArray.controls.push(
           this.fb.nonNullable.control(selectedItem)
         );
